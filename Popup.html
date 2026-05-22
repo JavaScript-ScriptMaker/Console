@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Main.css">
+</head>
+<body>
+  <div id="Body">
+    
+    <div id="Notification_Center">
+      <span id="Notification_Text">System Initialized.</span>
+      <span id="Notification_Time"></span>
+    </div>
+
+    <div id="Tabs">
+      <button class="Btn_Tab active" data-tab="Startup">Startup</button>
+      <button class="Btn_Tab" data-tab="Libraries">Libraries</button>
+      <button class="Btn_Tab" data-tab="Tabs-Manager">Tabs</button>
+      <button class="Btn_Tab" data-tab="Console-Tab">Console</button>
+      <div id="Dynamic_Tabs_Container" style="display: contents;"></div>
+    </div>
+
+    <hr class="Header_Line">
+
+    <div id="Tab_Windows">
+      
+      <div id="Startup" class="Tab active">
+        <div class="Tab-Content">
+          <h3 style="margin-bottom:6px; color:#ffffff;">Expandable Console</h3>
+          <p>Welcome. Please upload your .ConsoleLib configurations under the Libraries tab to get started.</p>
+        </div>
+      </div>
+
+      <div id="Libraries" class="Tab">
+        <div class="Tab-Content">
+          <!-- Filtered strictly for .ConsoleLib bundles -->
+          <input type="file" id="json-file-input" accept=".ConsoleLib" class="Hidden_Input">
+          
+          <label for="json-file-input" id="Custom_File_Input">
+            <span class="Fake_File_Btn">Choose file</span>
+            <span id="file-label-text">No file chosen</span>
+          </label>
+
+          <button id="upload-btn" class="Action_Btn">Save Library</button>
+          
+          <hr class="Header_Line" style="margin: 12px 0; background-color: #3f222b;">
+          
+          <input type="text" id="lib-search-input" placeholder="Search saved libraries...">
+          
+          <div id="library-list"></div>
+        </div>
+      </div>
+
+      <div id="Tabs-Manager" class="Tab">
+        <div class="Tab-Content">
+          <div id="chrome-tabs-list"></div>
+        </div>
+      </div>
+
+      <div id="Console-Tab" class="Tab">
+        <div class="Tab-Content">
+          <div class="Console_Wrapper" style="position: relative;">
+            <div id="autocomplete-suggestions"></div>
+            <textarea id="console-input" rows="4" placeholder="inject <library> <function> <tabid> [args...]"></textarea>
+            <button id="console-clear-btn" style="position: absolute; top: 6px; right: 6px; background: transparent; border: none; color: #b38690; cursor: pointer; font-size: 11px; font-weight: bold; z-index: 5;">✕</button>
+          </div>
+          <button id="execute-btn" class="Action_Btn">Execute Command</button>
+          <div id="console-output" style="margin-top:8px; font-size:10px; color:#b38690;"></div>
+        </div>
+      </div>
+
+      <div id="Dynamic_Windows_Container" style="display: contents;"></div>
+
+    </div>
+  </div>
+  <script src="Popup.js" type="module"></script>
+</body>
+</html>
